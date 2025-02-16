@@ -1,0 +1,333 @@
+<?php include 'config.php'; ?>
+
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <title>Vyčio TV</title>
+    <link rel="icon" href="Cropped_Image.png" type="image/x-icon type">
+    <link rel="stylesheet" href="styless.css">
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "90%" 
+        }
+</script>
+<style>
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+        }
+        .dropdown-button {
+            background-color: black;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .dropdown-button:hover {
+            background-color: #e50914;
+        }
+        .dropdown-content {
+            position: absolute;
+            background-color: black;
+            border-radius: 10px;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(255, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+            padding: 10px;
+            z-index: -1;
+            display: none;
+        }
+        .dropdown-content a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-content a:hover {
+            background-color: #e50914;
+        }
+        .dropdown.show .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 1;
+        }
+    </style>
+<body onload="zoom()">
+    <header>
+        <div class="logo">
+            <h1>Vyčio TV</h1> 
+        </div>
+        <nav>
+            <ul><img src="vycio_tv_logo.png.jpg" width="230" height="150" style="border-radius: 20px;"></ul>
+        </nav>
+            <ul>
+                <li><a href="#history">Istorija</a></li>
+                <li><a href="#admins">Adminai</a></li>
+                <li><a href="#articles">Straipsniai</a></li>
+                <li><a href="#news">Laikraštis</a></li>
+                <li><a href="#support">Pagalba</a></li>
+                <li><a href="#programa">Programa</a></li>
+            </ul>
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown()">Pasirinkti svetainę</button>
+        <div class="dropdown-content">
+            <a href="https://5k-tv.vercel.app/">5k TV</a>
+            <a href="https://www.youtube.com/@Dbgtv-v9s">Youtube kanalas</a>
+        </div>
+    </div>
+        </nav>
+    </header>
+    <main>
+        <section id="#new vids>
+             <div class="content-box">
+            <h2>Naujausios žinios</h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/M3ZZzd6-R8g?si=crr6cFFyOJ9L-1VS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" style="border-radius: 20px;" allowfullscreen></iframe>
+            </div>
+        </div>
+    <h1> Jei nėra žinių rašykit vygiui </h1>
+        </section> 
+<!-- Istorijos skyrius -->
+        <section id="history">
+            <h2>Vyčio TV istorija</h2>
+            <p>Vyčio TV prasidėjo 2023 m. rugsėjo 20 d., kai Vytis ir jo draugė Gabija sukūrė „Viber“ kanalą juokingoms naujienoms dalintis. Kanalo istorija tęsiasi su daugybe įdomių įvykių, įskaitant įsilaužimą, serialo „Tripsis“ sukūrimą ir administratorių pokyčius.</p>
+            <p>Vyčio TV buvo atnaujintas 2024 m. rugpjūčio 11 d., sujungus Danieliaus, Vyginto ir Vyčio jėgas. Šiuo metu kanalas turi daug projektų, įskaitant filmus, naujienas ir specialias programas!</p>
+        </section>
+
+        <!-- Adminų skyrius -->
+      <section id="admins">
+     <h2>Adminai</h2>
+    <ul>
+        <li><strong>Vainius:</strong> Nežinau ką jis čia daro, bet labai daug žmonių priveda į mūsų kanalą reporteris ir žurnalistas</li>
+        <li><strong>Vytis:</strong> Pagrindinis įkūrėjas, kūrybingas ir drąsus lyderis taip pat ir reporteris.</li>
+        <li><strong>Danielius:</strong> Vyčio TV redaktorius ir filmų kūrėjas dar ir reporteris.</li>
+        <li><strong>Artemas:</strong> Humoro kupinas gangsterio personažas su garsiąja fraze „grah grah boom pew pew pew“.</li>
+        <li><strong>Vygintas:</strong> Kūrybiškas narys, atsakingas už specialius projektus daro daug dainų.</li>
+        <li><strong>Tonis:</strong> Legendinis tonis.exe personažas, susijęs su „Local 58“.</li>
+    </ul>
+</section>
+        <!-- Straipsnių skyrius -->
+        <section id="articles">
+            <h2>Straipsniai</h2>
+            <article>
+                <h3>Pirmasis straipsnis</h3>
+                <p>Vyčio TV neseniai pristatė laikraščius. Pirmasis išeis 02-03. Lauksime jūsų nuomonės.</p>
+                <p>Komentarai:</p>
+                <ul class="comments">
+                    <li>Puikus straipsnis! Laukiame daugiau naujienų. - Jonas</li> 
+                    <li>Labai įdomu skaityti apie Vyčio TV projektus! - Laura</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Antrasis straipsnis</h3>
+                <p>Vyksta logotipu rinkimai laimėtojas yra numeris #4</p>
+                <p>Komentarai:</p>
+                <ul class="comments">
+                    <li>Puikus Logotipas - Adomas</li>
+            </article>
+        </section>
+
+        <!-- Pagalbos skyrius -->
+        <section id="support"
+             background-size: cover; 
+             background-position: center; 
+             background-attachment: fixed; 
+             height: 100vh; 
+             margin: 0;">
+            <h2>Pagalba klientams</h2>
+            <p>Jei turite klausimų ar problemų, galite susisiekti su mumis el. paštu: <a href="mailto:parko20a@gmail.com">parko20a@gmail.com</a></p>
+            <p>nepamirškite prisijungti prie viber grupės.</p>
+            <p>Jei norite įdėti savo komentarų rašykite į mūsų el.paštą.</p>
+            <section class="hero">
+    <h2>Jei jums viskas patiko rašykite El. paštu</h2>
+    <p>prisijungite prie mūsų komandos</p>
+    <button class="viber-button" onclick="window.location.href='https://invite.viber.com/?g2=AQB3Luga6dcHKlNdK%2BV%2FiftrcsSS3n2HlVsNnSnqwPfLjlpAAutzdcPVryvxBR0i&lang=en';">
+    Viber kanalas
+    </button>
+</section>
+
+<style>
+    .viber-button {
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #7360f2; /* Viber-like purple */
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(115, 96, 242, 0.3);
+    }
+
+    .viber-button:hover {
+        background-color: #5c4bc7;
+        box-shadow: 0 8px 20px rgba(92, 75, 199, 0.4);
+        transform: translateY(-3px);
+    }
+
+    .viber-button:active {
+        background-color: #47349c;
+        transform: translateY(1px);
+    }
+</style>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScUkQpXBkco-V10PBfX_KIookQw3XKmBTuaNaui-jT86cd5sA/viewform?embedded=true" width="1000" height="500" frameborder="0" marginheight="0" style="border-radius: 15px;" marginwidth="0">Įkeliama… </iframe>
+        </section>
+        <section id="news" style="background-image: url('coffee-1869772_1280.jpg'); background-size: cover; background-position: center;">
+    <h2>Laikraštis</h2>
+    <h3>2025-02-10 Leidimas</h3>
+    <h1 style="color: black;" class="outlinedtext">Laikraštis yra „Premium” versija Vyčio TV naujienų. Laikraščio kaina buvo nemokama testavimo laikotarpyje ir bus nemokama specialiu metu. 
+    Jį gauti galėsite 3-6 Vilėšių mokyklos kabinete arba pamatyti laikraštį mūsų interneto puslapyje. (Laikraštis bus rodomas ten vėliau)
+    į interneto svetaine kelsime tik nemokamus laikraščius.</h1>
+    <p><strong>*Laikraščio kaina gali būti nuo 5ct iki 35ct</strong></p>
+        </class>
+        <div class="content-box">
+            <button class="newspaper-button" onclick="window.location.href='https://vileisiumokykla-my.sharepoint.com/:w:/r/personal/vytis_navickas_vileisiumokykla_lt/Documents/Dokumentas%202.docx?d=w3975c0529d974bf997758c45b39bb80f&csf=1&web=1&e=vtfSxa';">
+    <strong>Laikraštis</strong>
+    </button>
+</section>
+        
+<style>
+    .newspaper-button {
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #000008; /* Viber-like purple */
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(115, 96, 242, 0.3);
+    }
+
+    .newspaper-button:hover {
+        background-color: #FFFFFF;
+        box-shadow: 0 8px 20px rgba(92, 75, 199, 0.4);
+        transform: translateY(-3px);
+    }
+
+    .newspaper-button:active {
+        background-color: #808080;
+        transform: translateY(1px);
+    }
+</style>
+    <section id=#programa>
+        <div>
+        <div class="programa">
+        <div>
+            <h4>Pirmadienis</h4>
+            <p><strong>Vyčio TV programa:</strong></p>
+            <ul>
+                <li>22:00-13:00 PROGRAMOS PABAIGA</li>
+                <li>14:00 Žinios</li>
+                <li>18:00 Žinios</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Antradienis</h4>
+            <p><strong>Vyčio TV programa:</strong></p>
+            <ul>
+                <li>21:00-14:00 PROGRAMOS PABAIGA</li>
+                <li>15:00 Žinios</li>
+                <li>18:00 Žinios</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Trečiadienis</h4>
+            <p><strong>Vyčio TV programa:</strong></p>
+            <ul>
+                <li>21:00-14:00 PROGRAMOS PABAIGA</li>
+                <li>15:00 Žinios</li>
+                <li>18:00 Žinios</li>
+        </div>
+        <div><h4>Ketvirtadienis</h4>
+            <p><strong>Vyčio TV programa:</strong></p>
+            <ul>
+                <li>21:00-14:00 PROGRAMOS PABAIGA</li>
+                <li>16:00 Žinios</li>
+                <li>18:00 Žinios</li>
+        </div>
+        <div>
+            <h4>Penktadienis</h4>
+            <p><strong>Vyčio TV programa:</strong></p>
+            <ul>
+                <li>21:00-14:00 PROGRAMOS PABAIGA</li>
+                <li>15:00 Žinios</li>
+                <li>16:30 Savaitės orų prognozė</li>
+                <li>18:00 Sportas</li>
+                <li>19:00-20:00 EntorK filmukai</li>
+        </div>
+        <div>
+            <h4>Šeštadienis</h4>
+            <p><strong>Vyčio TV programa:</strong></p>
+            <ul>
+                <li>21:00-14:00 PROGRAMOS PABAIGA</li>
+                <li>15:00 Žinios</li>
+                <li>16:30 Vaikam laida</li>
+                <li>18:00 Sportas</li>
+                <li>19:00-20:00 EntorK filmukai</li>
+        </div>
+        <div>
+            <h4>Sekmadienis</h4>
+            <p><strong>Vyčio TV programa:</strong></p>
+            <ul>
+                <li>21:00-14:00 PROGRAMOS PABAIGA</li>
+                <li>15:00 Žinios</li>
+                <li>16:30 Savaitės aptarimas su Vygiu</li>
+                <li>18:00 Sportas</li>
+                <li>19:00-20:00 EntorK filmukai</li>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        font-family: "Century gothic";
+        padding: 20px;
+        background-color: #382b82;
+        border-radius: 10px;
+    }
+    h2 {
+        color: #fff;
+    }
+    .programa {
+        display: flex;
+        gap: 20px;
+    }
+    .programa div {
+        background: #a29eb8;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+    </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Vyčio TV. Visos teisės saugomos.</p>
+    </footer>
+     <script>
+        function toggleDropdown() {
+            var dropdown = document.querySelector(".dropdown");
+            dropdown.classList.toggle("show");
+        }
+    </script>
+</body>
+</html><!-- google-site-verification: google2dbe5e0f64438fda.html -->
