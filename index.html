@@ -18,6 +18,30 @@
         }
 </script>
 <style>
+            /* Fullscreen overlay */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        /* Spinning image */
+        #spinner {
+            width: 100px; /* Adjust as needed */
+            height: 100px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         .dropdown {
             position: relative;
@@ -72,6 +96,9 @@
         <div class="logo">
             <h1>Vyčio TV</h1> 
         </div>
+            <div id="loading-screen">
+        <img id="spinner" src="Clipped_image_20250217_122027.png" alt="Loading...">
+    </div>
         <nav>
             <ul><img src="vycio_tv_logo.png.jpg" width="230" height="150" style="border-radius: 20px;"></ul>
         </nav>
@@ -329,6 +356,10 @@
             var dropdown = document.querySelector(".dropdown");
             dropdown.classList.toggle("show");
         }
+        window.addEventListener("load", function() {
+            document.getElementById("loading-screen").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        });
     </script>
 </body>
 </html><!-- google-site-verification: google2dbe5e0f64438fda.html -->
