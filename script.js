@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const elements = document.querySelectorAll("p, img, h1, li, button, ul, h2, h3, h4, h5, h6, a, ul, frame"); // Select all text & images
+    const elements = document.querySelectorAll("p, img, h1, li, button, ul, h2, h3, h4, h5, h6, a, ul, dropdown-button, frame"); // Select all text & images
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
