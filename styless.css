@@ -1,28 +1,4 @@
-      /* Hide the warning by default */
-#landscapeWarning {
-    display: none;
-    background-color: #ffcc00;
-    color: black;
-    padding: 20px;
-    text-align: center;
-    font-size: 16px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Take up the entire height of the screen */
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-   /* Make it only show on phones */
-        @media (max-width: 768px) {
-            #landscapeWarning {
-                display: block;
-            }
-        } /* Bendras stilius */
+ /* Bendras stilius */
 body {
     font-family: "Century Gothic"; /* Updated font */
     margin: 0;
