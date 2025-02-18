@@ -1,5 +1,5 @@
       /* Hide the warning by default */
-       #landscapeWarning {
+#landscapeWarning {
     display: none;
     background-color: #ffcc00;
     color: black;
@@ -17,8 +17,7 @@
     justify-content: center;
     flex-direction: column;
 }
-
-        /* Make it only show on phones */
+   /* Make it only show on phones */
         @media (max-width: 768px) {
             #landscapeWarning {
                 display: block;
