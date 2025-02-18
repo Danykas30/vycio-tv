@@ -25,19 +25,3 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(element); // Observe each element
     });
 });
-      function checkOrientation() {
-            if (window.innerWidth > window.innerHeight) {
-                // If landscape, hide the warning
-                document.getElementById('landscapeWarning').style.display = 'none';
-            } else {
-                // If portrait, show the warning
-                document.getElementById('landscapeWarning').style.display = 'block';
-            }
-        }
-
-        // Run the function on load and when orientation changes
-        window.addEventListener('resize', checkOrientation);
-        window.addEventListener('orientationchange', checkOrientation);
-
-        // Initial check when the page loads
-        checkOrientation();
