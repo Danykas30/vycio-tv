@@ -201,3 +201,17 @@ body{
             height: auto;
         }
     }
+    /* Other existing styles */
+
+    #support iframe {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Media query for phones */
+    @media (max-width: 600px) {
+        #support iframe {
+            width: 100%;
+            height: auto;
+        }
+    }
