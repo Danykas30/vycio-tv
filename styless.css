@@ -187,3 +187,17 @@ body{
             flex-direction: column;
         }
     }
+    /* Other existing styles */
+
+    .video-container iframe {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Media query for phones */
+    @media (max-width: 600px) {
+        .video-container iframe {
+            width: 100%;
+            height: auto;
+        }
+    }
