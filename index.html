@@ -51,6 +51,21 @@
       background-color: #a3d5ff;
       color: #0e1a2b;
     }
+    .news-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .news-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
     main {
       max-width: 1000px;
       margin: 0 auto;
@@ -158,6 +173,15 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
   </style>
 </head>
   <body onload="zoom()">
@@ -180,7 +204,23 @@
       <!-- Viber invite mygtukas -->
       <a href="https://invite.viber.com/?g2=AQB3Luga6dcHKlNdK%2BV%2FiftrcsSS3n2HlVsNnSnqwPfLjlpAAutzdcPVryvxBR0i&lang=en" class="viber-button">Prisijunk prie Viber</a>
     </section>
-    
+    <section id="news" class="content-box">
+      <h2>Naujienos</h2>
+      <div class="news-section">
+        <div class="news-card">
+          <h3>Vyčio TV sugrįžimas!</h3>
+          <p>Po ilgos pertraukos, Vyčio TV vėl veikia! Su nauja komanda ir šviežiomis idėjomis.</p>
+        </div>
+        <div class="news-card">
+          <h3>EntorK Channel Startas</h3>
+          <p>Naujasis Vyčio TV kanalas, skirtas animacijoms ir kūrybiniam turiniui. Sekite naujienas!</p>
+        </div>
+        <div class="news-card">
+          <h3>Vyčflix Pasirodymas</h3>
+          <p>Vyčio TV filmai dabar pasiekiami per Vyčflix! Nauja ir moderni filmų platforma.</p>
+        </div>
+      </div>
+    </section>
     <!-- Programos su YouTube iframe -->
     <section id="programos" class="content-box">
       <h2>Rekomenduojamos Programos</h2>
