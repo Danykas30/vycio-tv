@@ -231,7 +231,7 @@
   <body onload="zoom()">
   <header>
     <h1>Vyčio TV</h1>
-    <p>Geriausias kanalas fr fr</p>
+    <p>Tiksliausių žinių kanalas</p>
   </header>
   <nav>
     <a href="#programos">Programos</a>
@@ -420,7 +420,7 @@
     <p>&copy; 2025 Vyčio TV. Visos teisės saugomos.</p>
   </footer>
     <script>document.addEventListener("DOMContentLoaded", function () {
-    const elements = document.querySelectorAll("p, img, h1, li, button, ul, h2, h3, h4, h5, h6, a, ul, dropdown-button, iframe"); // Select all text & images
+    const elements = document.querySelectorAll("p, img, h1, li, button, ul, h2, h3, h4, h5, h6, a, ul, dropdown-button, iframe, content-box, news-section, news-card"); // Select all text & images
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -451,13 +451,9 @@
       document.getElementById("loading-screen").style.display = "none";
     });
   function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('open');
-        }
-      function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.classList.toggle('open');
-}
+  }
 </script>
 </body>
 </html>
