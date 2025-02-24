@@ -419,6 +419,16 @@
   <footer>
     <p>&copy; 2025 Vyčio TV. Visos teisės saugomos.</p>
   </footer>
+    <script>
+    // Inicijuojame AOS
+    AOS.init({ once: true });
+    
+    // Sklandus slinkimas iki sekcijos
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    </script>
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
   function toggleMenu() {
