@@ -420,6 +420,34 @@
     <p>&copy; 2025 Vyčio TV. Visos teisės saugomos.</p>
   </footer>
     <script>
+   
+    document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll("p, img, h1, li, button, ul, h2, h3, h4, h5, h6, a, ul, dropdown-button, frame"); // Select all text & images
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const elem = entry.target;
+            if (entry.isIntersecting) {
+                elem.classList.add("in-view"); // Fly to normal position
+                elem.classList.remove("out-of-view-up", "out-of-view-down");
+            } else {
+                // Determine whether the element is moving up or down
+                const rect = elem.getBoundingClientRect();
+                if (rect.top < window.innerHeight / 2) {
+                    elem.classList.add("out-of-view-up");
+                } else {
+                    elem.classList.add("out-of-view-down");
+                }
+                elem.classList.remove("in-view");
+            }
+        });
+    }, { threshold: 0.2 });
+
+    elements.forEach(element => {
+        element.classList.add("animate"); // Start hidden
+        observer.observe(element); // Observe each element
+    });
+});
     // Inicijuojame AOS
     AOS.init({ once: true });
     
@@ -427,6 +455,17 @@
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
+    
+    // Paslėpti įkėlimo ekraną, kai puslapis pilnai įkeliamas
+    window.onload = function() {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.style.opacity = '0';
+      loadingScreen.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    }
+  
     </script>
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
