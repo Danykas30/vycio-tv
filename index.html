@@ -9,6 +9,21 @@
   <link rel="icon" href="Cropped_Image.png" type="image/x-icon type">
   <title>Vyčio TV</title>
       <style>
+        /* Add media query for mobile devices */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center align buttons */
+    }
+
+    nav a {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 5px 0; /* Add some margin between buttons */
+        width: 100%; /* Make the buttons full width */
+        text-align: center; /* Center text */
+    }
+}
         html {
             scroll-behavior: smooth; /* Enables smooth scrolling */
         }
@@ -433,7 +448,10 @@
   </main>
   
   <footer>
-    <p>&copy; 2025 Vyčio TV. Visos teisės saugomos.</p> <a href="https://vycio-tv.vercel.app/#">Atgal į viršų</a>
+    <p>&copy; 2025 Vyčio TV. Visos teisės saugomos.</p>
+    <nav>
+    <a href="https://vycio-tv.vercel.app/#">Atgal į viršų</a>
+    </nav>  
   </footer>
     <script>
    
