@@ -8,10 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" href="/Cropped_Image.png" type="image/x-icon">
-<!-- Light mode favicon (default) -->
-<link id="favicon-light" rel="icon" href="Cropped_Image.png" media="(prefers-color-scheme: light)">
-<!-- Dark mode favicon (inverted) -->
-<link id="favicon-dark" rel="icon" href="image(1).png" media="(prefers-color-scheme: dark)">
+      <script>
+        const favicon = document.getElementById('favicon');
+        
+        const setFavicon = () => {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            favicon.href = isDarkMode ? 'image(1).png' : 'favicon.png';
+        };
+
+        // Set on load and update on theme change
+        setFavicon();
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
+    </script>
   
   <title>Vyčio TV</title>
       <style>
