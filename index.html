@@ -271,12 +271,42 @@
       to { opacity: 1; transform: translateX(0); }
     }
   </style>
+  <style>
+  #loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  #spinner {
+    width: 100px;
+    height: 100px;
+    background: url('Clipped_image_20250217_122027.png') no-repeat center center;
+    background-size: contain;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
 </head>
   <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" onload="zoom()">
   <header>
     <h1>Vyčio TV</h1>
     <p>Tiksliausių žinių kanalas</p>
   </header>
+    <div id="loading-screen">
+  <div id="spinner"></div>
+</div>
   <nav>
     <a href="#programos">Programos</a>
     <a href="#about">Apie Mus</a>
@@ -515,7 +545,16 @@
     }
   
     </script>
-  
+  <script>
+  window.onload = function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.opacity = '0';
+    loadingScreen.style.transition = 'opacity 0.5s ease';
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 500);
+  }
+</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
   function toggleMenu() {
