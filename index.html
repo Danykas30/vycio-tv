@@ -23,7 +23,7 @@
   
   <title>Vyčio TV</title>
       <style>
-          .program-schedule {
+.program-schedule {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -32,13 +32,17 @@
     border: 1px solid #a3d5ff;
     padding: 10px;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
   }
   .program-schedule th {
     background-color: #1a3b5d;
     color: #fff;
   }
   .program-schedule td {
-    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  .program-schedule td:hover {
+    background-color: rgba(255, 255, 255, 0.2);
   }
         @media (max-width: 600px) {
     nav {
@@ -450,19 +454,6 @@
         </div>
       </div>
     </section>
-    <!-- Programos su YouTube iframe -->
-    <section id="programos" class="content-box">
-      <h2>Naujausios žinios</h2>
-      <div class="video-container">
-        <iframe src=https://www.youtube.com/embed/CRkrfa-Paw4?si=yKdNBPwsk2k9BLjf" 
-                title="YouTube video player" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
-      </div>
-      <p>
-        Atrask naujausias televizijos programas ir serialus. Mūsų platforma nuolat atnaujinama naujausiais laidų ir filmų turiniais.
-      </p>
     </section>
       <section id="newspaper" class="content-box">
       <h2>Laikraštis</h2>
@@ -533,7 +524,19 @@
         <a href="mailto:vyciotv@gmail.com" style="color:#a3d5ff;">vyciotv@gmail.com</a>.
       </p>
     </section>.
- <table class="program-schedule">
+<section id="programos" class="content-box">
+  <h2>Naujausios žinios</h2>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/CRkrfa-Paw4?si=yKdNBPwsk2k9BLjf"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
+  </div>
+  <p>
+    Atrask naujausias televizijos programas ir serialus. Mūsų platforma nuolat atnaujinama naujausiais laidų ir filmų turiniais.
+  </p>
+  <table class="program-schedule">
     <thead>
       <tr>
         <th>Diena</th>
