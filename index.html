@@ -26,6 +26,67 @@
   <!--title to long? its because of bing-->
   <title>Vyčio TV oficiali svetainė</title>
       <style>
+         .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    /* Base style for floating shapes */
+    .shape {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.1);
+      animation: float 20s ease-in-out infinite;
+    }
+    /* Square shape style */
+    .square {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+    }
+    /* Circle shape style */
+    .circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    /* Keyframe animation for floating effect */
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(50px, -50px) rotate(180deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+    /* Alternative slow floating animation for variety */
+    @keyframes floatSlow {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(-30px, -30px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+    .slow {
+      animation: floatSlow 30s ease-in-out infinite;
+    }
+    /* Content styles (over the animated background) */
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      color: #333;
+    }
 .program-schedule {
     width: 100%;
     border-collapse: collapse;
@@ -154,7 +215,7 @@
     }
     body {
       font-family: 'Segoe UI', sans-serif; /* Windows 11 estetikai puikiai tinka */
-      background: #0e1a2b; /* tamsiai mėlyna */
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
       color: #ffffff;
       line-height: 1.6;
       overflow-x: hidden;
@@ -355,6 +416,15 @@
     <h1>Vyčio TV</h1>
     <p>Artem keys fr fr🔑</p>
   </header>
+     <div class="background">
+    <!-- Example shapes with inline positioning -->
+    <div class="shape square" style="top: 10%; left: 15%;"></div>
+    <div class="shape circle slow" style="top: 50%; left: 80%; background: rgba(0, 0, 0, 0.15);"></div>
+    <div class="shape square slow" style="top: 70%; left: 25%; background: rgba(0, 0, 0, 0.08);"></div>
+    <div class="shape circle" style="top: 30%; left: 40%;"></div>
+    <div class="shape square" style="top: 80%; left: 70%;"></div>
+    <div class="shape circle slow" style="top: 20%; left: 90%;"></div>
+  </div>
     <div id="loading-screen">
   <div id="spinner"></div>
 </div>
