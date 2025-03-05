@@ -1,2 +1,6 @@
+vycio-tv.vercel.app/robots.txt
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+Sitemap: vycio-tv.vercel.app/sitemap.xml
