@@ -410,12 +410,31 @@
     to { transform: rotate(360deg); }
   }
 </style>
+   <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .content-box {
+            flex: 1;
+            min-width: 300px; /* Adjust based on your desired minimum width for mobile */
+            margin: 10px;
+        }
+        #news {
+            order: 1; /* Ensures the news section is on the right on larger screens */
+        }
+        @media (max-width: 768px) {
+            #news {
+                order: 0; /* Ensures the news section is on top on smaller screens */
+            }
+        }
+    </style>
 </head>
   <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" onload="zoom()">
   <header>
     <img src="image(3).png" width="100" height="100"><br>
     <h1>Vyčio TV</h1>
-    <p>Taip pat peržiurėkite Tonio TV</p><a href="tonio-tv.vercel.app">Svetainę</a>
+    <p>Taip pat peržiurėkite Tonio TV</p><a href="https://tonio-tv.vercel.app">Svetainę</a>
   </header>
      <div class="background">
     <!-- Example shapes with inline positioning -->
@@ -430,10 +449,10 @@
   <div id="spinner"></div>
 </div>
   <nav>
+    <a href="https://vycio-tv.vercel.app/news/">Žinios</a>
     <a href="#programos">Programos</a>
     <a href="#about">Apie Mus</a>
-    <a href="#contact">Kontaktai</a>
-    <a href="https://vycio-tv.vercel.app/news/">Žinios</a>
+    <a href="#contact">Kontaktai</a>    
   </nav>
   <main>
     <div class="container">
