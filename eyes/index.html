@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Žaidimas</title>
+  <style>
+    body {
+      background: #1e1e1e;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      font-family: sans-serif;
+    }
+    /* Eyes Container */
+    .container {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+    .eye {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #fff 60%, #ddd);
+      border: 4px solid #000;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 0 8px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+    .iris {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle, #4a90e2, #0066cc 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+    }
+    .iris::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      top: 10px;
+      left: 10px;
+    }
+    .pupil {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #000;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+    }
+    /* Nose Styling */
+    #nose {
+      width: 40px;
+      height: 40px;
+      background: #e0ac69;
+      border: 2px solid black;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      margin: 10px auto;
+    }
+    /* Booger Styling */
+    .booger {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #7ED321;
+      border-radius: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 100%;
+      opacity: 1;
+      animation: boogerAnimation 1s forwards;
+    }
+    @keyframes boogerAnimation {
+      0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(50px);
+        opacity: 0;
+      }
+    }
+    /* SVG Mouth Styling */
+    #mouthSVG {
+      cursor: pointer;
+      user-select: none;
+      overflow: visible;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.5));
+    }
+    #mouthPath {
+      fill: #e74c3c;
+      stroke: black;
+      stroke-width: 3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Eyes -->
+  <div class="container">
+    <div class="eye">
+      <div class="iris">
+        <div class="pupil"></div>
+      </div>
+    </div>
+    <div class="eye">
+      <div class="iris">
+        <div class="pupil"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Nose -->
+  <div id="nose"></div>
+  
+  <!-- SVG Mouth (Coordinate system: 0,0 to 300,300) -->
+  <svg id="mouthSVG" width="300" height="300">
+    <path id="mouthPath" d="M150,120 C200,120 250,150 150,180 C50,150 100,120 150,120 Z"/>
+  </svg>
+  
+  <script>
+    // --------------------------
+    // Eyes Follow the Mouse
+    // --------------------------
+    document.addEventListener('mousemove', (event) => {
+      document.querySelectorAll('.eye').forEach(eye => {
+        const iris = eye.querySelector('.iris');
+        const rect = eye.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = event.clientX - centerX;
+        const deltaY = event.clientY - centerY;
+        const angle = Math.atan2(deltaY, deltaX);
+        const maxDisplacement = 20;
+        const offsetX = Math.cos(angle) * maxDisplacement - 35;
+        const offsetY = Math.sin(angle) * maxDisplacement - 35;
+        iris.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      });
+    });
+    
+    // --------------------------
+    // Bouncy Mouth with Draggable Anchors (SVG)
+    // --------------------------
+    // Define four anchor points for the mouth: top, right, bottom, left
+    const anchors = [
+      { name: 'top',    rest: { x: 150, y: 120 }, pos: { x: 150, y: 120 }, vel: { x: 0, y: 0 } },
+      { name: 'right',  rest: { x: 250, y: 150 }, pos: { x: 250, y: 150 }, vel: { x: 0, y: 0 } },
+      { name: 'bottom', rest: { x: 150, y: 180 }, pos: { x: 150, y: 180 }, vel: { x: 0, y: 0 } },
+      { name: 'left',   rest: { x: 50,  y: 150 }, pos: { x: 50,  y: 150 }, vel: { x: 0, y: 0 } }
+    ];
+    
+    let activeAnchor = null;
+    let dragOffset = { x: 0, y: 0 };
+    
+    const svg = document.getElementById('mouthSVG');
+    const mouthPath = document.getElementById('mouthPath');
+    
+    // Convert mouse/touch event coordinates to SVG coordinates.
+    function getSVGPoint(evt) {
+      const pt = svg.createSVGPoint();
+      pt.x = evt.clientX;
+      pt.y = evt.clientY;
+      return pt.matrixTransform(svg.getScreenCTM().inverse());
+    }
+    
+    // Compute a smooth closed curve (using Catmull-Rom to Cubic Bezier conversion)
+    function updateMouthPath() {
+      let d = "";
+      const n = anchors.length;
+      for (let i = 0; i < n; i++) {
+        const p0 = anchors[(i - 1 + n) % n].pos;
+        const p1 = anchors[i].pos;
+        const p2 = anchors[(i + 1) % n].pos;
+        const p3 = anchors[(i + 2) % n].pos;
+        const cp1 = {
+          x: p1.x + (p2.x - p0.x) / 6,
+          y: p1.y + (p2.y - p0.y) / 6
+        };
+        const cp2 = {
+          x: p2.x - (p3.x - p1.x) / 6,
+          y: p2.y - (p3.y - p1.y) / 6
+        };
+        if (i === 0) {
+          d += `M ${p1.x},${p1.y} `;
+        }
+        d += `C ${cp1.x},${cp1.y} ${cp2.x},${cp2.y} ${p2.x},${p2.y} `;
+      }
+      d += "Z";
+      mouthPath.setAttribute("d", d);
+    }
+    
+    updateMouthPath();
+    
+    // Simple spring physics parameters
+    const springK = 0.15;
+    const damping = 0.8;
+    
+    function animate() {
+      anchors.forEach((anchor, index) => {
+        if (activeAnchor === index) return;
+        const dx = anchor.rest.x - anchor.pos.x;
+        const dy = anchor.rest.y - anchor.pos.y;
+        const ax = dx * springK;
+        const ay = dy * springK;
+        anchor.vel.x = (anchor.vel.x + ax) * damping;
+        anchor.vel.y = (anchor.vel.y + ay) * damping;
+        anchor.pos.x += anchor.vel.x;
+        anchor.pos.y += anchor.vel.y;
+      });
+      updateMouthPath();
+      requestAnimationFrame(animate);
+    }
+    
+    requestAnimationFrame(animate);
+    
+    // Drag Event Handlers for the SVG Mouth
+    function onPointerDown(evt) {
+      evt.preventDefault();
+      const pt = getSVGPoint(evt);
+      let closest = null;
+      let minDist = 20;
+      anchors.forEach((anchor, index) => {
+        const dx = pt.x - anchor.pos.x;
+        const dy = pt.y - anchor.pos.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = index;
+          dragOffset.x = anchor.pos.x - pt.x;
+          dragOffset.y = anchor.pos.y - pt.y;
+        }
+      });
+      if (closest !== null) {
+        activeAnchor = closest;
+      }
+    }
+    
+    function onPointerMove(evt) {
+      if (activeAnchor === null) return;
+      evt.preventDefault();
+      const pt = getSVGPoint(evt);
+      anchors[activeAnchor].pos.x = pt.x + dragOffset.x;
+      anchors[activeAnchor].pos.y = pt.y + dragOffset.y;
+      anchors[activeAnchor].vel.x = 0;
+      anchors[activeAnchor].vel.y = 0;
+      updateMouthPath();
+    }
+    
+    function onPointerUp(evt) {
+      if (activeAnchor !== null) {
+        activeAnchor = null;
+      }
+    }
+    
+    svg.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('mousemove', onPointerMove);
+    document.addEventListener('mouseup', onPointerUp);
+    
+    svg.addEventListener('touchstart', (evt) => onPointerDown(evt.touches[0]));
+    document.addEventListener('touchmove', (evt) => onPointerMove(evt.touches[0]));
+    document.addEventListener('touchend', onPointerUp);
+    
+    // --------------------------
+    // Nose: Press for Boogers!
+    // --------------------------
+    const nose = document.getElementById('nose');
+    nose.addEventListener('click', function(e) {
+      const booger = document.createElement('div');
+      booger.classList.add('booger');
+      // Add a slight random horizontal offset so each booger is a bit different.
+      const offset = Math.random() * 20 - 10;
+      booger.style.left = `calc(50% + ${offset}px)`;
+      nose.appendChild(booger);
+      // Remove the booger after the animation finishes.
+      setTimeout(() => {
+        if (booger.parentNode) booger.parentNode.removeChild(booger);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
