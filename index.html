@@ -1436,6 +1436,35 @@ Kitą dieną po D. Trumpo kalbos Kongrese M. Egede socialiniame tinkle „Facebo
         </div>
     </div>
 </section>
+  <style>
+    .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+      <button class="btn" onclick="startConfetti()">Click me for confetti!</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function startConfetti() {
+            // Trigger the confetti effect
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+    </script>
 
   <!-- Kontaktų sekcija -->
   <section id="contact">
