@@ -1579,6 +1579,36 @@ Kitą dieną po D. Trumpo kalbos Kongrese M. Egede socialiniame tinkle „Facebo
   </section>
   <section id="funny stuff">
       <button class="btn" onclick="startConfetti()">Click me for confetti!</button><br> <p>Honorable mention:Google, Disqus, Vercel.</p><br><a href="eyes">Žaidimas</a><br>
+    <style>
+a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+a:hover {
+  color: #f0f0f0; /* Slightly lighter color on hover */
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+
+    </style>
 <!-- wow 1500 lines crazy! -->
 <!--subscribe to aszazza on yt! -->
   <!-- in this section is just random stuff im testing -->
