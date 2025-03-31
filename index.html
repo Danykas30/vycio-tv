@@ -2,31 +2,96 @@
 <html lang="lt">
   <head>
     <meta charset="UTF-8">
-    <title>Vyčio tv užsidarymas</title>
+    <title>Vyčio TV užsidarymas</title>
     <style>
-    body {
-    font-family: arial;
-    background-color: black;
-    color: white;
-    text-align: center;
-    justify-content: center;
-    }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: black;
+        color: white;
+        text-align: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      /* Flying square animations */
+      .square {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.5);
+        animation: fly 10s infinite;
+      }
+
+      @keyframes fly {
+        0% {
+          transform: translateX(-100px) translateY(-100px);
+        }
+        25% {
+          transform: translateX(100vw) translateY(-100px);
+        }
+        50% {
+          transform: translateX(100vw) translateY(100vh);
+        }
+        75% {
+          transform: translateX(-100px) translateY(100vh);
+        }
+        100% {
+          transform: translateX(-100px) translateY(-100px);
+        }
+      }
+
+      /* Randomize the position and animation duration of each square */
+      .square:nth-child(odd) {
+        animation-duration: 8s;
+      }
+
+      .square:nth-child(even) {
+        animation-duration: 12s;
+      }
+
       a {
         color: white;
         text-decoration: none;
+        transition: color 0.3s, transform 0.3s;
       }
-      a: hover {
+
+      a:hover {
         text-decoration: underline;
         color: gray;
+        transform: scale(1.1);
       }
+
+      div {
+        color: black;
+        background-color: white;
+        border-radius: 15px;
+        display: inline-block;
+        padding: 20px;
+        transition: transform 0.3s;
+      }
+
+      div:hover {
+        transform: translateY(-5px);
+      }
+
     </style>
   </head>
   <body>
-  <h1>404 nerasta</h1>
-  <h2>Vyčio TV užsidarė</h2><br>
-  <p>paskutinis kartas kai męs užsidarome</p>
-  <p>jei kažkas nori gražinti vyčio tv jau yra per vėlu.</p>
-  <a href="https://google.com">sugrįžti</a>
+    <!-- Flying squares in the background -->
+    <div class="square" style="top: 10%; left: 20%"></div>
+    <div class="square" style="top: 30%; left: 50%"></div>
+    <div class="square" style="top: 50%; left: 70%"></div>
+    <div class="square" style="top: 80%; left: 10%"></div>
+    <div class="square" style="top: 60%; left: 90%"></div>
+
+    <div>
+      <h1>404 nerasta</h1>
+      <h2>Vyčio TV užsidarė</h2><br>
+      <p>paskutinis kartas kai męs užsidarome</p>
+      <p>jei kažkas nori gražinti vyčio tv jau yra per vėlu.</p>
+      <a href="https://google.com">sugrįžti</a>
+    </div>
   </body>
 </html>
-  
